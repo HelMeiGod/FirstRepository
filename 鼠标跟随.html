@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标跟随效果</title>
+	</head>
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		#ange1{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+		}
+	</style>
+	<script src="../JS/jquery-3.4.1.js"></script>
+	<body>
+		<img src="../IMG/xts.gif" id="ange1" alt="1">
+	</body>
+	<script>
+		$(function(){
+			//获取图片
+			var ange = $('#ange1');
+			//预定义节流阀
+			var timer = null;
+			//绑定mousemove事件
+			$(document).on('mousemove',function(e){
+				// console.log(e.pageX)
+				//开启延时器
+				if(timer){return}
+				timer = setTimeout(function(){
+					$(ange).css('top',e.pageY+"px").css('left',e.pageX+"px");
+					console.log("ok");
+					timer = null;
+				},16)
+			})
+		})
+	</script>
+</html>
